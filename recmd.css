@@ -1,0 +1,200 @@
+/* Overall background styling */
+body {
+    background-color: #e9f2f8;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Container for the recommendations */
+.recommendation-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px auto;
+    padding: 40px;
+    max-width: 1200px;
+    background-color: #f0f4f8;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
+    background-image: linear-gradient(to right, #e6f7ff, #dfe9f3);
+}
+
+/* Each recommendation item */
+.recommendation-item {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 25px;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    background-color: #ffffff;
+    background-image: linear-gradient(to right, #ffffff, #f7f9fc);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.recommendation-item:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Left-aligned recommendation */
+.recommendation-item.left {
+    justify-content: flex-start;
+}
+
+/* Right-aligned recommendation */
+.recommendation-item.right {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* Placeholder for an image next to each recommendation */
+.recommendation-item img {
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.recommendation-item:hover img {
+    transform: rotate(360deg);
+}
+
+/* Flexbox for recommendation text */
+.recommendation-text {
+    flex-grow: 1;
+    font-size: 18px;
+    color: #333;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+    background-color: #f9fbfd;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.recommendation-text:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(52, 152, 219, 0.2);
+    z-index: -1;
+    transition: width 0.3s ease-in-out;
+}
+
+.recommendation-item:hover .recommendation-text:before {
+    width: 100%;
+}
+
+/* Styling for the heading */
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2em;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #16a085, #3498db);
+    -webkit-background-clip: text;
+    color: white;
+    text-shadow: none;
+    background-clip: border-box;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* General styling for the recommendation plan */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+    background-color: #f9fafb;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+ul li:hover {
+    color: #3498db;
+    background-color: #ecf5ff;
+}
+
+/* Button styling with gradient, hover effects, and modern design */
+button {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background: linear-gradient(to right, #16a085, #27ae60);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Additional hover animation for button press */
+button:focus {
+    outline: none;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .recommendation-item {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
