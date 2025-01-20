@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendation Plan</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recmd.css') }}">
+</head>
+<body>
+    <h1>Recommendation Plan for Cardiovascular Health</h1>
+    <div class="recommendation-container">
+        <!-- Left-aligned recommendation -->
+        <div class="recommendation-item left">
+            <img src="{{ url_for('static', filename='image1.png') }}" alt="Healthy Diet">
+            <div class="recommendation-text">Maintain a healthy diet rich in fruits, vegetables, and whole grains.</div>
+        </div>
+        <!-- Right-aligned recommendation -->
+        <div class="recommendation-item right">
+            <div class="recommendation-text">Engage in regular physical activity, such as walking, jogging, or swimming, at least 30 minutes a day.</div>
+            <img src="{{ url_for('static', filename='image2.png') }}" alt="Physical Activity">
+        </div>
+        <!-- Left-aligned recommendation -->
+        <div class="recommendation-item left">
+            <img src="{{ url_for('static', filename='image3.png') }}" alt="No Smoking">
+            <div class="recommendation-text">Avoid smoking and limit alcohol consumption.</div>
+        </div>
+        <!-- Right-aligned recommendation -->
+        <div class="recommendation-item right">
+            <div class="recommendation-text">Manage stress through relaxation techniques like yoga, meditation, or deep breathing exercises.</div>
+            <img src="{{ url_for('static', filename='image4.png') }}" alt="Manage Stress">
+        </div>
+        <!-- Left-aligned recommendation -->
+        <div class="recommendation-item left">
+            <img src="{{ url_for('static', filename='image5.png') }}" alt="Monitor Health">
+            <div class="recommendation-text">Monitor your blood pressure, cholesterol, and blood sugar levels regularly.</div>
+        </div>
+        <!-- Right-aligned recommendation -->
+        <div class="recommendation-item right">
+            <div class="recommendation-text">Consult your healthcare provider for regular check-ups and follow their advice regarding medications or lifestyle changes.</div>
+            <img src="{{ url_for('static', filename='image6.png') }}" alt="Consult Doctor">
+        </div>
+    </div>
+
+    <!-- New Section for Medications -->
+    <h1>Medications for Cardiovascular Health</h1>
+    <div class="recommendation-container">
+        <!-- Cardiovascular Disease (CVD) -->
+        <div class="recommendation-item left">
+            
+            <div class="recommendation-text">
+                <strong>Cardiovascular Disease (CVD):</strong> <br>
+                Aspirin, Beta-blockers (e.g., Metoprolol, Atenolol), ACE Inhibitors (e.g., Lisinopril, Ramipril), Statins (e.g., Atorvastatin, Rosuvastatin)
+            </div>
+        </div>
+        <!-- Hypertension -->
+        <div class="recommendation-item right">
+            <div class="recommendation-text">
+                <strong>Hypertension (High Blood Pressure):</strong> <br>
+                Diuretics (e.g., Hydrochlorothiazide), Calcium Channel Blockers (e.g., Amlodipine), ARBs (e.g., Losartan, Valsartan)
+            </div>
+            
+        </div>
+        <!-- Diabetes -->
+        <div class="recommendation-item left">
+            
+            <div class="recommendation-text">
+                <strong>Diabetes:</strong> <br>
+                Metformin, SGLT2 Inhibitors (e.g., Empagliflozin, Canagliflozin), GLP-1 Agonists (e.g., Liraglutide)
+            </div>
+        </div>
+        <!-- Hyperlipidemia -->
+        <div class="recommendation-item right">
+            <div class="recommendation-text">
+                <strong>Hyperlipidemia (High Cholesterol):</strong> <br>
+                Statins (e.g., Simvastatin, Atorvastatin), Ezetimibe, PCSK9 Inhibitors (e.g., Alirocumab, Evolocumab)
+            </div>
+            
+        </div>
+        <!-- Myocardial Infarction -->
+        <div class="recommendation-item left">
+            
+            <div class="recommendation-text">
+                <strong>Myocardial Infarction (Heart Attack):</strong> <br>
+                Clopidogrel, Nitroglycerin, Thrombolytics, Beta-blockers
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons to control audio playback -->
+    <button id="read-recommendations">Read Recommendations Aloud</button>
+    <button id="pause-recommendations">Pause Audio</button>
+
+    <script>
+        let utterance = null;
+
+        document.getElementById('read-recommendations').addEventListener('click', function() {
+            fetch('/recommendations_text')
+                .then(response => response.json())
+                .then(data => {
+                    const text = data.text;
+                    if (utterance) {
+                        window.speechSynthesis.cancel();
+                    }
+                    utterance = new SpeechSynthesisUtterance(text);
+                    window.speechSynthesis.speak(utterance);
+                })
+                .catch(error => console.error('Error fetching recommendations:', error));
+        });
+
+        document.getElementById('pause-recommendations').addEventListener('click', function() {
+            if (utterance) {
+                window.speechSynthesis.pause();
+            }
+        });
+
+        document.getElementById('resume-recommendations').addEventListener('click', function() {
+            if (utterance) {
+                window.speechSynthesis.resume();
+            }
+        });
+    </script>
+</body>
+</html>

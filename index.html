@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardiovascular Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Cardiovascular Disease Prediction</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="phone">Phone Number:</label><br>
+        <input type="text" id="phone" name="phone" required><br><br>
+        <label for="age">Age:</label><br>
+        <input type="text" id="age" name="age"><br><br>
+        <label for="gender">Gender (0: Female, 1: Male):</label><br>
+        <input type="text" id="gender" name="gender"><br><br>
+        <label for="chestpain">Chest Pain Type (0-3):</label><br>
+        <input type="text" id="chestpain" name="chestpain"><br><br>
+        <label for="restingBP">Resting Blood Pressure:</label><br>
+        <input type="text" id="restingBP" name="restingBP"><br><br>
+        <label for="serumcholestrol">Serum Cholesterol:</label><br>
+        <input type="text" id="serumcholestrol" name="serumcholestrol"><br><br>
+        <label for="fastingbloodsugar">Fasting Blood Sugar (1: > 120 mg/dl, 0: <= 120 mg/dl):</label><br>
+        <input type="text" id="fastingbloodsugar" name="fastingbloodsugar"><br><br>
+        <label for="restingrelectro">Resting Electrocardiographic Results (0-2):</label><br>
+        <input type="text" id="restingrelectro" name="restingrelectro"><br><br>
+        <label for="maxheartrate">Max Heart Rate Achieved:</label><br>
+        <input type="text" id="maxheartrate" name="maxheartrate"><br><br>
+        <label for="exerciseangia">Exercise Induced Angina (1: Yes, 0: No):</label><br>
+        <input type="text" id="exerciseangia" name="exerciseangia"><br><br>
+        <label for="oldpeak">Oldpeak:</label><br>
+        <input type="text" id="oldpeak" name="oldpeak"><br><br>
+        <label for="slope">Slope (0-2):</label><br>
+        <input type="text" id="slope" name="slope"><br><br>
+        <label for="noofmajorvessels">Number of Major Vessels (0-3):</label><br>
+        <input type="text" id="noofmajorvessels" name="noofmajorvessels"><br><br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
